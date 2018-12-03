@@ -1,31 +1,22 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
+
+	"github.com/complex64/aoc2018/internal/pkg/aoc"
 )
 
 func main() {
-	// f is a file of integers to sum up
-	f, err := os.Open("./input")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-
-	// tokenize the buffered input line by line
-	r := bufio.NewReader(f)
-	s := bufio.NewScanner(r)
 	var sum, i int32
-	for ; s.Scan(); {
+	err := aoc.CallForEachLineInFile("./input", func(line string) error {
 		// each line holds a single sign-prefixed integer
-		if _, err = fmt.Sscanf(s.Text(), "%d", &i); err != nil {
-			panic(err)
+		if _, err := fmt.Sscanf(line, "%d", &i); err != nil {
+			return err
 		}
 		sum += i
-	}
-	if err := s.Err(); err != nil {
+		return nil
+	})
+	if err != nil {
 		panic(err)
 	}
 	fmt.Println(sum)
