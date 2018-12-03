@@ -6,6 +6,7 @@ import (
 	"github.com/complex64/aoc2018/internal/pkg/aoc"
 )
 
+// https://adventofcode.com/2018/day/1
 func main() {
 	var sum, i int32
 	err := aoc.CallForEachLineInFile("./input", func(line string) error {

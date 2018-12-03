@@ -14,7 +14,7 @@ func CallForEachLineInFile(name string, fun func(string) error) error {
 	// tokenize the buffered input line by line
 	r := bufio.NewReader(f)
 	s := bufio.NewScanner(r)
-	for ; s.Scan(); {
+	for s.Scan() {
 		if err := fun(s.Text()); err != nil {
 			return err
 		}
