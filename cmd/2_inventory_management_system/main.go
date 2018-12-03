@@ -10,7 +10,7 @@ import (
 func main() {
 	wordsWithDouble, wordsWithTriple := 0, 0
 	err := aoc.CallForEachLineInFile("./input", func(line string) error {
-		d, t := GetDoubleAndTripleCount(line)
+		d, t := getDoubleAndTripleCount(line)
 		wordsWithDouble += d
 		wordsWithTriple += t
 		return nil
@@ -21,7 +21,7 @@ func main() {
 	fmt.Println(wordsWithDouble * wordsWithTriple)
 }
 
-func GetDoubleAndTripleCount(line string) (double int, triple int) {
+func getDoubleAndTripleCount(line string) (double int, triple int) {
 	// map of (b in [a..z]) -> count(b) in line
 	m := make(map[byte]int, 26)
 	for i := 0; i < len(line); i++ {

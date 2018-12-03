@@ -25,7 +25,7 @@ func TestGetDoubleAndTripleCount(t *testing.T) {
 }
 
 func assertDoubleAndTriple(t *testing.T, line string, double, triple int) {
-	d, tr := GetDoubleAndTripleCount(line)
+	d, tr := getDoubleAndTripleCount(line)
 	assert.Equal(t, double, d)
 	assert.Equal(t, triple, tr)
 }
